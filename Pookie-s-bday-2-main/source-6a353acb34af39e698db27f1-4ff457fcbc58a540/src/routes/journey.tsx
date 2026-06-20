@@ -20,7 +20,6 @@ const DAYS = [
   { num: 8, date: 'August 9', unlockDate: '2026-08-09', icon: '✨', title: 'Because of You', subtitle: 'The ways you changed my world', color: '#c8c070', hasPassword: true },
   { num: 9, date: 'August 10', unlockDate: '2026-08-10', icon: '🎁', title: 'Birthday Surprise II', subtitle: 'One more thing just for you', color: '#b070c8', hasPassword: true },
   { num: 10, date: 'August 11', unlockDate: '2026-08-11', icon: '🌅', title: 'T‑Minus One', subtitle: 'Tomorrow I come to you', color: '#c89050', hasPassword: true },
-  { num: 11, date: 'August 12', unlockDate: '2026-08-12', icon: '✈️', title: 'Mission Control', subtitle: "I'm on my way", color: '#60c890', hasPassword: true },
 ]
 
 function hexToRgb(hex: string) {
@@ -75,35 +74,44 @@ function JourneyPage() {
       </div>
 
       <div className="animate-fade-up delay-500 px-4" style={{ textAlign: 'center', marginBottom: '48px' }}>
-  <p className="font-script" style={{ fontSize: '1.6rem', color: 'var(--gold)', marginBottom: '12px' }}>
-    10 days to go !!
-  </p>
-  <p
-    style={{
-      color: 'var(--text-muted)',
-      lineHeight: 1.7,
-      maxWidth: '560px',
-      margin: '0 auto',
-    }}
-  >
-    Today we are celebrating! Not only is your birthday, it's also the final countdown until I fly to Tahiti! It's officially only ten days left to go, and for that I have prepared ten little surprises for you, one for each day until we meet again hihi
-    Hope you like them !! I love you so much and I can't wait to see you in person again ❤️
-  </p>
-</div>
-{/* Days grid */}
-<div
-  className="max-w-4xl mx-auto px-4"
-  style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-    gap: '16px',
-  }}
->
+        <p className="font-script" style={{ fontSize: '1.6rem', color: 'var(--gold)', marginBottom: '12px' }}>
+          10 days to go !!
+        </p>
+        <p
+          style={{
+            color: 'var(--text-muted)',
+            lineHeight: 1.7,
+            maxWidth: '560px',
+            margin: '0 auto',
+          }}
+        >
+          Today we are celebrating! Not only is your birthday, it's also the final countdown until I fly to Tahiti! It's officially only ten days left to go, and for that I have prepared ten little surprises for you, one for each day until we meet again hihi
+          Hope you like them !! I love you so much and I can't wait to see you in person again ❤️
+        </p>
+      </div>
+
+      {/* Days grid */}
+      <div
+        className="max-w-4xl mx-auto px-4"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+          gap: '16px',
+        }}
+      >
         {DAYS.map((day, i) => {
           const isUnlocked = parisDate >= day.unlockDate
           const isToday = parisDate === day.unlockDate
+          const isLast = day.num === DAYS.length
           return (
-            <DayCard key={day.num} day={day} isUnlocked={isUnlocked} isToday={isToday} animDelay={`${i * 60}ms`} />
+            <DayCard
+              key={day.num}
+              day={day}
+              isUnlocked={isUnlocked}
+              isToday={isToday}
+              animDelay={`${i * 60}ms`}
+              featured={isLast}
+            />
           )
         })}
       </div>
@@ -123,11 +131,12 @@ function JourneyPage() {
   )
 }
 
-function DayCard({ day, isUnlocked, isToday, animDelay }: {
+function DayCard({ day, isUnlocked, isToday, animDelay, featured }: {
   day: typeof DAYS[0]
   isUnlocked: boolean
   isToday: boolean
   animDelay: string
+  featured?: boolean
 }) {
   const rgb = hexToRgb(day.color)
   const isClickable = isUnlocked || day.hasPassword
@@ -135,17 +144,22 @@ function DayCard({ day, isUnlocked, isToday, animDelay }: {
   const inner = (
     <div
       style={{
-        padding: '24px',
+        padding: featured ? '32px 24px' : '24px',
         background: isUnlocked
-          ? `linear-gradient(135deg, rgba(${rgb},0.12) 0%, rgba(255,255,255,0.04) 100%)`
+          ? `linear-gradient(135deg, rgba(${rgb},0.16) 0%, rgba(255,255,255,0.04) 100%)`
           : 'rgba(255,255,255,0.03)',
-        border: `1px solid ${isUnlocked ? `rgba(${rgb},0.35)` : 'rgba(255,255,255,0.07)'}`,
+        border: `1px solid ${isUnlocked ? `rgba(${rgb},0.4)` : 'rgba(255,255,255,0.07)'}`,
         borderRadius: '16px',
         opacity: isUnlocked ? 1 : 0.55,
         position: 'relative' as const,
         height: '100%',
         cursor: isClickable ? 'pointer' : 'default',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        display: featured ? 'flex' : 'block',
+        flexDirection: featured ? 'column' as const : undefined,
+        alignItems: featured ? 'center' : undefined,
+        textAlign: featured ? 'center' as const : undefined,
+        boxShadow: featured && isUnlocked ? `0 8px 32px rgba(${rgb},0.25)` : undefined,
       }}
     >
       {isToday && (
@@ -158,16 +172,16 @@ function DayCard({ day, isUnlocked, isToday, animDelay }: {
           Today
         </div>
       )}
-      <div style={{ fontSize: '2rem', marginBottom: '12px', filter: isUnlocked ? 'none' : 'grayscale(1)' }}>
+      <div style={{ fontSize: featured ? '2.6rem' : '2rem', marginBottom: '12px', filter: isUnlocked ? 'none' : 'grayscale(1)' }}>
         {isUnlocked ? day.icon : (day.hasPassword ? '🔑' : '🔒')}
       </div>
       <div style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>
         Day {day.num} · {day.date}
       </div>
-      <h3 className="font-romantic" style={{ fontSize: '1.25rem', fontWeight: 400, color: isUnlocked ? 'var(--text-light)' : 'var(--text-muted)', margin: '0 0 6px' }}>
+      <h3 className="font-romantic" style={{ fontSize: featured ? '1.6rem' : '1.25rem', fontWeight: 400, color: isUnlocked ? 'var(--text-light)' : 'var(--text-muted)', margin: '0 0 6px' }}>
         {isUnlocked ? day.title : 'Locked'}
       </h3>
-      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
+      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0, maxWidth: featured ? '360px' : undefined }}>
         {isUnlocked ? day.subtitle : (day.hasPassword ? 'Enter the code to unlock ✦' : 'This memory is not ready yet. Come back tomorrow ❤️')}
       </p>
       {isUnlocked && (
@@ -176,9 +190,14 @@ function DayCard({ day, isUnlocked, isToday, animDelay }: {
     </div>
   )
 
+  const wrapperStyle: React.CSSProperties = {
+    animationDelay: animDelay,
+    ...(featured ? { gridColumn: '1 / -1' } : {}),
+  }
+
   if (isClickable) {
     return (
-      <div className="animate-fade-up" style={{ animationDelay: animDelay }}>
+      <div className="animate-fade-up" style={wrapperStyle}>
         <Link
           to="/day/$dayNum"
           params={{ dayNum: String(day.num) }}
@@ -191,7 +210,7 @@ function DayCard({ day, isUnlocked, isToday, animDelay }: {
   }
 
   return (
-    <div className="animate-fade-up" style={{ animationDelay: animDelay }}>
+    <div className="animate-fade-up" style={wrapperStyle}>
       {inner}
     </div>
   )

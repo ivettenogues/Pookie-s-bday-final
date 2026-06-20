@@ -52,9 +52,9 @@ function DayPage() {
   }
 
   const dayComponents: Record<number, ComponentType> = {
-    1: Day1, 2: Day2, 3: Day3, 4: Day4, 5: Day5,
-    6: Day6, 7: Day7, 8: Day8, 9: Day9, 10: Day10, 11: Day11,
-  }
+  1: Day1, 2: Day2, 3: Day5, 4: Day4, 5: Day3, // <-- 3 and 5 swapped
+  6: Day6, 7: Day7, 8: Day8, 9: Day9, 10: Day10, 11: Day11,
+}
   const DayComponent = dayComponents[dayNum]
   return DayComponent ? <DayComponent /> : null
 }
@@ -370,8 +370,8 @@ const HEARTS_DATA = [
 function Day3() {
   const [open, setOpen] = useState<number | null>(null)
   return (
-    <PageShell dayNum={3} bgGradient="radial-gradient(ellipse at 60% 10%, #0f1f3a 0%, #071828 60%)">
-      <SectionTitle label="Day 3 · August 4" title="Our Memories" subtitle="Tap a heart to unlock a memory" />
+    <PageShell dayNum={5} bgGradient="radial-gradient(ellipse at 60% 10%, #0f1f3a 0%, #071828 60%)">
+  <SectionTitle label="Day 5 · August 6" title="Our Memories" subtitle="Tap a heart to unlock a memory" />
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 20px 40px' }}>
         {/* Heart field */}
         <div
@@ -646,96 +646,154 @@ function Day4() {
    DAY 5 · August 6 · BIRTHDAY SURPRISE #1 🎁
 ══════════════════════════════════════════════════════════ */
 
-const lovingReasons = [
-  "The way you explain things — you always find an angle I hadn't considered",
-  "How you remember the small things I mention in passing",
-  "Your laugh — specifically when something catches you off guard",
-  "The fact that you're honest with me, even when it would be easier not to be",
-  "The way you describe your home — with such precise, unguarded love",
-  "How you handle silence on calls: never awkward, always comfortable",
-  "Your curiosity — the way you want to understand things properly",
-  "That you read the same book as me just to have something to share",
-  "The way distance made you more present, not less",
-  "Your voice at the end of a long day",
-  "The fact that you ask how I am and actually listen to the answer",
-  "How completely yourself you are — no performance, just you",
-  "The way you love the ocean — without sentimentality, just real",
-  "That you pressed a flower and sent it in an envelope",
-  "Your patience with bad connections, with time zones, with all of it",
-  "How you make even ordinary things feel worth describing",
-  "The specific way you type when you're tired — slower, warmer",
-  "That you know when I need reassurance and give it without being asked",
-  "The way you see beauty in small, specific things",
-  "That you exist on this planet and somehow crossed my path",
-]
+const RESTAURANT_PHOTO = '/gallery/le_lotus.JPG' // make sure this matches the exact filename you upload
 
 function Day5() {
-  const [revealed, setRevealed] = useState(0)
-  const [showAll, setShowAll] = useState(false)
-
-  const displayCount = showAll ? lovingReasons.length : revealed
-  const visible = lovingReasons.slice(0, displayCount)
+  const [open, setOpen] = useState(false)
 
   return (
-    <PageShell dayNum={5} bgGradient="radial-gradient(ellipse at 60% 0%, #2a0f25 0%, #071828 60%)">
-      <SectionTitle label="Day 5 · August 6 · Birthday Surprise" title="Why I Love You" subtitle="A few of the reasons. There are so many more." />
-      <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 20px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
-          {visible.map((reason, i) => (
-            <div
-              key={i}
-              className="glass animate-fade-up"
-              style={{
-                padding: '16px 20px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '12px',
-                animationDelay: `${i < 5 ? i * 100 : 0}ms`,
-              }}
-            >
-              <span style={{ color: 'var(--gold)', fontSize: '0.8rem', marginTop: '3px', flexShrink: 0 }}>✦</span>
-              <p style={{ margin: 0, color: 'var(--sand)', lineHeight: 1.6, fontSize: '0.95rem' }}>{reason}</p>
-            </div>
-          ))}
-        </div>
+    <PageShell dayNum={3} bgGradient="radial-gradient(ellipse at 60% 0%, #2a0f25 0%, #071828 60%)">
+  <SectionTitle label="Day 3 · August 4 · Birthday Surprise" title="A Gift For You" subtitle="" />
+      <div style={{ maxWidth: '560px', margin: '0 auto', padding: '0 20px 60px', textAlign: 'center' }}>
+        <p
+          className="animate-fade-up font-romantic italic"
+          style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '40px' }}
+        >
+          No birthday is complete without a gift.
+        </p>
 
-        {!showAll && revealed < lovingReasons.length && (
-          <div className="text-center">
-            <button
-              onClick={() => setRevealed(Math.min(revealed + 4, lovingReasons.length))}
+        {/* Envelope */}
+        {!open && (
+          <div
+            className="animate-fade-up"
+            onClick={() => setOpen(true)}
+            style={{
+              maxWidth: '380px',
+              margin: '0 auto',
+              cursor: 'pointer',
+              borderRadius: '10px',
+              overflow: 'hidden',
+              boxShadow: '0 10px 36px rgba(0,0,0,0.35)',
+              border: '1px solid rgba(0,0,0,0.08)',
+              background: '#ffffff',
+            }}
+          >
+            {/* Flap */}
+            <div
               style={{
-                padding: '14px 40px',
-                background: 'rgba(200,160,80,0.12)',
-                border: '1px solid rgba(200,160,80,0.4)',
-                borderRadius: '50px',
-                color: 'var(--gold-light)',
-                cursor: 'pointer',
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '1rem',
-                letterSpacing: '0.08em',
-                marginBottom: '12px',
+                position: 'relative',
+                height: '150px',
+                background: '#ffffff',
+                clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
               }}
             >
-              Reveal more ✦
-            </button>
-            <br />
-            <button onClick={() => setShowAll(true)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.8rem' }}>
-              Show all at once
-            </button>
+              <svg
+                viewBox="0 0 100 50"
+                preserveAspectRatio="none"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.1 }}
+              >
+                <line x1="0" y1="0" x2="50" y2="50" stroke="#999" strokeWidth="0.6" />
+                <line x1="100" y1="0" x2="50" y2="50" stroke="#999" strokeWidth="0.6" />
+              </svg>
+            </div>
+            {/* Body */}
+            <div
+              style={{
+                background: '#ffffff',
+                borderTop: '1px solid rgba(0,0,0,0.06)',
+                padding: '28px 20px',
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: '1.1rem',
+                  fontStyle: 'italic',
+                  color: '#444',
+                }}
+              >
+                Open me
+              </p>
+            </div>
           </div>
         )}
 
-        {(showAll || revealed >= lovingReasons.length) && (
-          <div className="glass text-center animate-fade-up" style={{ padding: '28px', marginTop: '16px', background: 'rgba(200,160,80,0.08)', border: '1px solid rgba(200,160,80,0.3)' }}>
-            <p className="font-script" style={{ fontSize: '1.5rem', color: 'var(--gold)', margin: '0 0 8px' }}>And so many more.</p>
-            <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>Some things are better said in person — and soon, very soon, I will.</p>
+        {/* Invitation reveal */}
+        {open && (
+          <div
+            className="animate-fade-up"
+            style={{
+              maxWidth: '420px',
+              margin: '0 auto',
+              background: '#fffdf8',
+              borderRadius: '4px',
+              boxShadow: '0 16px 50px rgba(0,0,0,0.4)',
+              overflow: 'hidden',
+              border: '1px solid rgba(0,0,0,0.06)',
+            }}
+          >
+            <div
+              style={{
+                borderRadius: '0',
+                overflow: 'hidden',
+              }}
+            >
+              <img
+                src={RESTAURANT_PHOTO}
+                alt="Le Lotus restaurant"
+                style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
+
+            <div style={{ padding: '36px 32px', textAlign: 'center', border: '1px solid rgba(180,140,60,0.25)', margin: '14px', borderRadius: '2px' }}>
+              <p style={{ fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#a08040', margin: '0 0 22px' }}>
+                You Are Cordially Invited
+              </p>
+
+              <h2 className="font-romantic" style={{ fontSize: '2rem', fontWeight: 400, color: '#2a2018', margin: '0 0 4px', letterSpacing: '0.02em' }}>
+                Le Lotus
+              </h2>
+              <p style={{ color: '#a08040', fontSize: '0.78rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 26px' }}>
+                Tahiti
+              </p>
+
+              <div style={{ width: '40px', height: '1px', background: 'rgba(160,128,64,0.4)', margin: '0 auto 26px' }} />
+
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '26px' }}>
+                <div>
+                  <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Date</p>
+                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>August 13th</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Time</p>
+                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>7:30 PM</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Dress</p>
+                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>Elegant</p>
+                </div>
+              </div>
+
+              <p style={{ color: '#4a4034', lineHeight: 1.75, fontSize: '0.92rem', margin: '0 0 26px', fontFamily: "'Georgia', serif" }}>
+                For your birthday, I'm taking you to dinner — somewhere by the water, somewhere beautiful, just the two of us.
+              </p>
+
+              <div style={{ width: '40px', height: '1px', background: 'rgba(160,128,64,0.4)', margin: '0 auto 22px' }} />
+
+              <p
+                className="font-script"
+                style={{ fontSize: '1.3rem', color: '#a08040', margin: 0 }}
+              >
+                See you there, mon amour
+              </p>
+            </div>
           </div>
         )}
       </div>
     </PageShell>
   )
 }
-
 /* ══════════════════════════════════════════════════════════
    DAY 6 · August 7 · SPECIAL GIFT 🎁
 ══════════════════════════════════════════════════════════ */
@@ -880,43 +938,188 @@ function Day6() {
    DAY 7 · August 8 · OUR FUTURE 🌟
 ══════════════════════════════════════════════════════════ */
 
-const futures = [
-  { icon: '🌅', title: 'Watch a sunrise from the water', desc: 'Proper sunrise — before the heat comes up, when the sky is still deciding what colour to be. I want to be in the ocean when it happens.' },
-  { icon: '🍳', title: 'Cook together in a real kitchen', desc: "Not over video call, not 'and here's what I made' — together, in the same kitchen, with actual ingredients and actual chaos." },
-  { icon: '🚴', title: 'Explore somewhere neither of us has been', desc: 'A place where we have equal footing. Equal confusion and wonder. Discovering something side by side, for the first time, together.' },
-  { icon: '📖', title: 'Read in the same room', desc: 'No talking, just two people reading different books in the same light. That specific peaceful coexistence. I\'ve wanted that for months.' },
-  { icon: '🌊', title: 'Swim to the horizon', desc: 'Or as close as we can get. Just keep going out until the shore is small and it\'s just us and the open water and the sky.' },
-  { icon: '🎵', title: 'Dance together — actually dance', desc: 'To our playlist. To something neither of us expected to like. At some odd hour when it feels completely natural to be ridiculous together.' },
-  { icon: '🌃', title: 'Stay up too late for no reason', desc: 'Because the night is good and the conversation is good and for once there\'s no timezone to respect, no call to end, no goodnight to say.' },
-  { icon: '📷', title: 'Take exactly one photo', desc: "Not for anything. Just one, to prove it happened. That we were here, together, exactly where we promised we'd be." },
+const PARIS_BUDGET = 1700 // our very reasonable, totally realistic budget
+
+const homeItems = [
+  { icon: '🚽', name: 'Our own bathroom (I am not sharing a toilet with the neighbors)', cost: 350 },
+  { icon: '📐', name: 'An apartment over 35m² (completely unrealistic)', cost: 750 },
+  { icon: '🚪', name: 'A separate room (is that asking for too much?)', cost: 300 },
+  { icon: '🪑', name: 'A study desk (Pookie needs a place to do his homework!)', cost: 200 },
+  { icon: '🍽️', name: 'A dining table (for our dinner partiiiies!)', cost: 300 },
+  { icon: '🛏️', name: 'A sofa bed for our guests (when we have friends, I mean...)', cost: 300 },
+  { icon: '🪟', name: 'A window not facing a wall (I need to see the sun the 3 days a year is out)', cost: 150 },
+  { icon: '🍳', name: 'An actual oven (to cook decent food)', cost: 100 },
+  { icon: '🍽️', name: 'A dishwasher (major luxury)', cost: 150 },
+  { icon: '🧺', name: 'A washing machine (I am not going up 6 floors with a heavy basket of laundry)', cost: 100 },
+  { icon: '🌿', name: 'A balcony (dreaming is free, right?)', cost: 800 },
+  { icon: '📍', name: 'A nice neighborhood (as long as I do not have to take the RER)', cost: 1000 },
 ]
 
 function Day7() {
+  const [placed, setPlaced] = useState<number[]>([])
+
+  const toggleItem = (i: number) => {
+    setPlaced(prev =>
+      prev.includes(i) ? prev.filter(p => p !== i) : [...prev, i]
+    )
+  }
+
+  const totalCost = placed.reduce((sum, i) => sum + homeItems[i].cost, 0)
+  const isOverBudget = totalCost > PARIS_BUDGET
+  const overBy = totalCost - PARIS_BUDGET
+  const pctOfBudget = Math.min((totalCost / PARIS_BUDGET) * 100, 999)
+
+  const budgetMessages = [
+    "We've barely started and we're already in trouble.",
+    "Ah yes, the famous Parisian 'cozy' pricing.",
+    "At this point we should just buy the building.",
+    "This is fine. This is totally fine.",
+    "Le propriétaire is laughing somewhere right now.",
+  ]
+  const budgetMessage = budgetMessages[Math.min(placed.length, budgetMessages.length - 1)]
+
   return (
-    <PageShell dayNum={7} bgGradient="radial-gradient(ellipse at 50% 0%, #0f2a0f 0%, #071828 60%)">
-      <SectionTitle label="Day 7 · August 8" title="Our Future Together" subtitle="Things I want to do with you, starting soon" />
-      <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 20px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
-          {futures.map((item, i) => (
+    <PageShell dayNum={7} bgGradient="radial-gradient(ellipse at 50% 0%, #1a2a0a 0%, #071828 60%)">
+      <SectionTitle label="Day 7 · August 8" title="Building Our Home" subtitle="Tap to start filling it up (Paris rent permitting)" />
+
+      <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 20px 40px' }}>
+        {/* The "home" scene */}
+        <div
+          className="glass animate-fade-up"
+          style={{
+            minHeight: '140px',
+            padding: '28px 24px',
+            marginBottom: '16px',
+            background: 'rgba(160,200,112,0.06)',
+            border: '1px solid rgba(160,200,112,0.25)',
+            borderRadius: '18px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '14px',
+          }}
+        >
+          {placed.length === 0 ? (
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontStyle: 'italic', margin: 0 }}>
+              Empty for now. Let's fill it up.
+            </p>
+          ) : (
+            placed.map(i => (
+              <div key={i} className="animate-fade-up" style={{ fontSize: '2.2rem' }}>
+                {homeItems[i].icon}
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Budget bar */}
+        <div
+          className="glass animate-fade-up"
+          style={{
+            padding: '18px 20px',
+            marginBottom: '24px',
+            background: isOverBudget ? 'rgba(200,100,100,0.08)' : 'rgba(255,255,255,0.03)',
+            border: `1px solid ${isOverBudget ? 'rgba(200,100,100,0.35)' : 'rgba(255,255,255,0.1)'}`,
+            borderRadius: '14px',
+            transition: 'background 0.3s ease, border 0.3s ease',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <span style={{ fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+              Paris apartment budget
+            </span>
+            <span style={{ fontSize: '0.78rem', color: isOverBudget ? '#e08a8a' : 'var(--sand)', fontWeight: 600 }}>
+              €{totalCost} / €{PARIS_BUDGET}
+            </span>
+          </div>
+          <div style={{ height: '8px', borderRadius: '50px', background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
             <div
-              key={i}
-              className="glass animate-fade-up"
               style={{
-                padding: '24px',
-                animationDelay: `${i * 80}ms`,
-                borderTop: '2px solid rgba(160,200,112,0.3)',
+                height: '100%',
+                width: `${Math.min(pctOfBudget, 100)}%`,
+                background: isOverBudget
+                  ? 'linear-gradient(90deg, #c87070, #e08a8a)'
+                  : 'linear-gradient(90deg, #a0c870, #c8d890)',
+                transition: 'width 0.4s ease, background 0.3s ease',
               }}
-            >
-              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>{item.icon}</div>
-              <h3 className="font-romantic" style={{ fontSize: '1.15rem', fontWeight: 500, color: 'var(--text-light)', margin: '0 0 8px' }}>{item.title}</h3>
-              <p style={{ fontSize: '0.87rem', color: 'var(--text-muted)', lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
-            </div>
-          ))}
+            />
+          </div>
+          {isOverBudget && (
+            <p className="animate-fade-up" style={{ margin: '10px 0 0', fontSize: '0.8rem', color: '#e08a8a', fontStyle: 'italic' }}>
+              €{overBy} over budget. {budgetMessage}
+            </p>
+          )}
         </div>
-        <div className="glass text-center animate-fade-up" style={{ padding: '28px', marginTop: '24px', background: 'rgba(160,200,112,0.06)', border: '1px solid rgba(160,200,112,0.2)' }}>
-          <p className="font-script" style={{ fontSize: '1.4rem', color: '#a0c870', margin: '0 0 8px' }}>This is only the beginning</p>
-          <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>Five more days until we start doing them.</p>
+
+        {/* Item picker grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+            gap: '12px',
+            marginBottom: '24px',
+          }}
+        >
+          {homeItems.map((item, i) => {
+            const isPlaced = placed.includes(i)
+            return (
+              <div
+                key={i}
+                className="animate-fade-up"
+                onClick={() => toggleItem(i)}
+                style={{
+                  animationDelay: `${i * 50}ms`,
+                  padding: '18px 14px',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  background: isPlaced ? 'rgba(160,200,112,0.14)' : 'rgba(255,255,255,0.03)',
+                  border: isPlaced ? '1px solid rgba(160,200,112,0.4)' : '1px solid rgba(255,255,255,0.08)',
+                  transition: 'background 0.2s ease, border 0.2s ease',
+                  position: 'relative',
+                }}
+              >
+                <span
+                  style={{
+                    position: 'absolute',
+                    top: '8px',
+                    right: '8px',
+                    fontSize: '0.62rem',
+                    color: isPlaced ? '#e08a8a' : 'var(--text-muted)',
+                    background: 'rgba(0,0,0,0.2)',
+                    padding: '2px 6px',
+                    borderRadius: '20px',
+                  }}
+                >
+                  +€{item.cost}
+                </span>
+                <div style={{ fontSize: '1.8rem', marginBottom: '8px', opacity: isPlaced ? 1 : 0.6 }}>
+                  {item.icon}
+                </div>
+                <p style={{ margin: 0, fontSize: '0.78rem', color: isPlaced ? 'var(--text-light)' : 'var(--text-muted)', lineHeight: 1.4 }}>
+                  {item.name}
+                </p>
+              </div>
+            )
+          })}
         </div>
+
+        {placed.length === homeItems.length && (
+          <div
+            className="glass text-center animate-fade-up"
+            style={{ padding: '28px', background: 'rgba(160,200,112,0.08)', border: '1px solid rgba(160,200,112,0.3)' }}
+          >
+            <p className="font-script" style={{ fontSize: '1.4rem', color: 'var(--gold)', margin: '0 0 8px' }}>
+              Our home, fully ours.
+            </p>
+            <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>
+              {isOverBudget
+                ? `Wildly over budget, financially questionable, and worth every euro.`
+                : `Everything on this list, and so much more I haven't even thought of yet — all of it, with you.`}
+            </p>
+          </div>
+        )}
       </div>
     </PageShell>
   )
@@ -933,22 +1136,55 @@ type GalleryPhoto = {
 
 
 const galleryPhotos: GalleryPhoto[] = [
-  { src: '/gallery/photo-01.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-02.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-03.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-01.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-02.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-03.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-01.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-02.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-03.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-01.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-02.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-03.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-01.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-02.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-03.jpg', caption: 'Your caption here' },
-  { src: '/gallery/photo-03.jpg', caption: 'Your caption here' },
+  { src: '/gallery/lanterns.JPG', caption: 'From the day we met' },
+  { src: '/gallery/pastry.JPG', caption: 'First time hanging out together' },
+  { src: '/gallery/turtles.JPG', caption: 'Insufferable couple before we even were a couple' },
+  { src: '/gallery/chofu.JPG', caption: 'The day I started crushing hard' },
+  { src: '/gallery/georgian.JPG', caption: 'Officially together!!' },
+  { src: '/gallery/pill.JPG', caption: 'The first from many visits' },
+  { src: '/gallery/bike.JPG', caption: 'Our first mini trip together' },
+  { src: '/gallery/guesthouse.JPG', caption: 'The dreamiest guesthouse' },
+  { src: '/gallery/ferry.JPG', caption: 'Almost missed it but I am glad I took a photo' },
+  { src: '/gallery/billar.JPG', caption: 'Lots of pool games in Mejirodai' },
+  { src: '/gallery/picnic_tokyo.JPG', caption: 'Many more picnics to come' },
+  { src: '/gallery/matsushima.JPG', caption: 'Prettiest view from a café' },
+  { src: '/gallery/yamadera.JPG', caption: 'This place was magical' },
+  { src: '/gallery/sendai.JPG', caption: 'When we realized it was snowing' },
+  { src: '/gallery/snow.JPG', caption: 'Snooow fight!' },
+  { src: '/gallery/snow_temple.JPG', caption: 'Just two people having stupid ideas' },
+  { src: '/gallery/onsen.JPG', caption: 'Best reward after a very cold day' },
+  { src: '/gallery/garlic.JPG', caption: 'Probably my favorite date' },
+  { src: '/gallery/macao_neon.JPG', caption: 'The beginning of our adventure in China' },
+  { src: '/gallery/christmas_eve.JPG', caption: 'Singing white girl music at a Chinese club on Christmas Eve' },
+  { src: '/gallery/hotel.JPG', caption: 'Best hotel ever!!' },
+  { src: '/gallery/dragon.JPG', caption: 'Christmas dinner on the clouds' },
+  { src: '/gallery/brochettes.JPG', caption: 'Photos taken before disaster' },
+  { src: '/gallery/spicy.JPG', caption: 'If it is not the consequences of our actions' },
+  { src: '/gallery/spice.JPG', caption: 'We do not learn from our mistakes' },
+  { src: '/gallery/tandem.JPG', caption: 'We were surprisingly good at tandem biking' },
+  { src: '/gallery/new_year.JPG', caption: 'Weirdest New Years Eve of my life' },
+  { src: '/gallery/sunrise.JPG', caption: 'Top 3 most special moments I have ever experienced' },
+  { src: '/gallery/great_wall.JPG', caption: 'The climb was no joke' },
+  { src: '/gallery/palace.JPG', caption: 'Our favorite place' },
+  { src: '/gallery/heart.JPG', caption: 'Months later, I can say it was true' },
+  { src: '/gallery/back_paris.JPG', caption: 'Pookie came back to Paris' },
+  { src: '/gallery/welcome_back.JPG', caption: 'One very wonderful night together' },
+  { src: '/gallery/matthieu.JPG', caption: 'We meet your friends!' },
+  { src: '/gallery/board_games.JPG', caption: 'And also mine!' },
+  { src: '/gallery/lyon.JPG', caption: 'We also met each others families' },
+  { src: '/gallery/raclette.JPG', caption: 'And I had a raclette for the first time' },
+  { src: '/gallery/barcelona.JPG', caption: 'I showed you around the city I love' },
+  { src: '/gallery/nice.JPG', caption: 'And we dreamt about a house in the south' },
+  { src: '/gallery/rose.JPG', caption: 'The cutest surprise ever' },
+  { src: '/gallery/drunk.JPG', caption: 'I got so drunk on wine this night' },
+  { src: '/gallery/picnic.JPG', caption: 'We got better at planning picnics' },
+  { src: '/gallery/sunset_paris.JPG', caption: 'And we walked around Paris comme des amoureaux' },
+  { src: '/gallery/keys.JPG', caption: 'Almost became homeless when we forgot the keys inside the apartment' },
+  { src: '/gallery/nuget.JPG', caption: 'And discovered many new places in the city' },
+  { src: '/gallery/tristan.JPG', caption: 'Spent some time with your family before you left' },
+  { src: '/gallery/invader.JPG', caption: 'And chased many, many invaders' },
+  { src: '/gallery/final.JPG', caption: 'I love you so much' },
+
 ]
 
 function Day8() {
@@ -1152,7 +1388,176 @@ function Day9() {
    DAY 10 · August 11 · T-MINUS ONE 🌅
 ══════════════════════════════════════════════════════════ */
 
-const FLIGHT_DATE = new Date('2026-08-12T10:00:00Z') // 12:00 Paris (CEST) = 10:00 UTC
+const FLIGHT_NUMBER = 'BF710'
+const PASSENGER_NAME = 'Ivette Nogués'
+const FLIGHTRADAR_URL = `https://www.flightradar24.com/data/flights/${FLIGHT_NUMBER.toLowerCase()}`
+
+const REUNION_PASSWORD = '0310'
+// Midnight Nov 1, 2026 in Tahiti (UTC-10) = 10:00 UTC on Nov 1, 2026
+const REUNION_UNLOCK_UTC = new Date('2026-11-01T10:00:00Z')
+
+function ReunionEnvelope() {
+  const [open, setOpen] = useState(false)
+  const [passwordInput, setPasswordInput] = useState('')
+  const [error, setError] = useState(false)
+
+  const isTimeUnlocked = new Date() >= REUNION_UNLOCK_UTC
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (passwordInput.trim() === REUNION_PASSWORD) {
+      setOpen(true)
+      setError(false)
+    } else {
+      setError(true)
+    }
+  }
+
+  return (
+    <div
+      className="glass animate-fade-up delay-300"
+      style={{
+        maxWidth: '460px',
+        width: '100%',
+        marginBottom: '40px',
+        background: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        padding: '28px 24px',
+        textAlign: 'center',
+      }}
+    >
+      <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '18px' }}>
+        Open when the distance is gone
+      </p>
+
+      {!open ? (
+        <div
+          onClick={() => isTimeUnlocked && setOpen(true)}
+          style={{
+            maxWidth: '300px',
+            margin: '0 auto',
+            cursor: isTimeUnlocked ? 'pointer' : 'default',
+            borderRadius: '10px',
+            overflow: 'hidden',
+            boxShadow: '0 8px 28px rgba(0,0,0,0.3)',
+            border: '1px solid rgba(0,0,0,0.08)',
+            background: '#ffffff',
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              height: '110px',
+              background: '#ffffff',
+              clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
+            }}
+          >
+            <svg
+              viewBox="0 0 100 50"
+              preserveAspectRatio="none"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.1 }}
+            >
+              <line x1="0" y1="0" x2="50" y2="50" stroke="#999" strokeWidth="0.6" />
+              <line x1="100" y1="0" x2="50" y2="50" stroke="#999" strokeWidth="0.6" />
+            </svg>
+          </div>
+
+          <div style={{ background: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)', padding: '20px 16px' }}>
+            {isTimeUnlocked ? (
+              <p style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: '#444' }}>
+                Open me
+              </p>
+            ) : (
+              <div onClick={e => e.stopPropagation()}>
+                <p style={{ margin: '0 0 4px', fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: '#888' }}>
+                  🔒 Enter the code
+                </p>
+                <p style={{ margin: '0 0 14px', fontSize: '0.68rem', color: '#aaa', letterSpacing: '0.05em' }}>
+                  or wait until November 1, 2026
+                </p>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={passwordInput}
+                    onChange={e => {
+                      setPasswordInput(e.target.value)
+                      setError(false)
+                    }}
+                    placeholder="••••"
+                    maxLength={4}
+                    style={{
+                      width: '80px',
+                      padding: '8px 10px',
+                      borderRadius: '6px',
+                      border: error ? '1px solid #c87070' : '1px solid rgba(0,0,0,0.15)',
+                      textAlign: 'center',
+                      fontSize: '0.95rem',
+                      letterSpacing: '0.2em',
+                      outline: 'none',
+                    }}
+                  />
+                  <button
+                    type="submit"
+                    style={{
+                      padding: '8px 16px',
+                      borderRadius: '6px',
+                      border: '1px solid rgba(160,128,64,0.4)',
+                      background: 'rgba(160,128,64,0.1)',
+                      color: '#a08040',
+                      fontSize: '0.8rem',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Unlock
+                  </button>
+                </form>
+                {error && (
+                  <p style={{ margin: '10px 0 0', fontSize: '0.7rem', color: '#c87070' }}>
+                    That's not quite it — try again.
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div
+          className="animate-fade-up"
+          style={{
+            maxWidth: '380px',
+            margin: '0 auto',
+            background: '#fffdf8',
+            borderRadius: '4px',
+            boxShadow: '0 16px 50px rgba(0,0,0,0.4)',
+            padding: '32px 28px',
+            border: '1px solid rgba(0,0,0,0.06)',
+            textAlign: 'left',
+          }}
+        >
+          <p style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#a08040', margin: '0 0 18px', textAlign: 'center' }}>
+            November 1, 2026
+          </p>
+          <p style={{ color: '#4a4034', lineHeight: 1.8, fontSize: '0.95rem', margin: '0 0 16px', fontFamily: "'Georgia', serif" }}>
+            {/* Write your letter here */}
+            My love,
+          </p>
+          <p style={{ color: '#4a4034', lineHeight: 1.8, fontSize: '0.95rem', margin: '0 0 16px', fontFamily: "'Georgia', serif" }}>
+            [Write the rest of your letter here.]
+          </p>
+          <p
+            className="font-script"
+            style={{ fontSize: '1.2rem', color: '#a08040', margin: '20px 0 0', textAlign: 'center' }}
+          >
+            Forever yours
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
 
 function Day10() {
   return (
@@ -1164,17 +1569,83 @@ function Day10() {
         <h1 className="animate-fade-up font-romantic delay-100" style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 300, color: 'var(--text-light)', margin: '0 0 8px' }}>
           T‑Minus One
         </h1>
-        <p className="animate-fade-up delay-200 font-romantic italic" style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '48px' }}>
+        <p className="animate-fade-up delay-200 font-romantic italic" style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '40px' }}>
           Tomorrow, I come to you.
         </p>
 
-        <div className="glass animate-fade-up delay-300" style={{ padding: '32px', maxWidth: '460px', marginBottom: '40px', background: 'rgba(200,160,80,0.07)', border: '1px solid rgba(200,160,80,0.25)' }}>
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px' }}>
-            Time until takeoff
-          </p>
-          <Countdown targetDate={FLIGHT_DATE} />
+        {/* Boarding pass */}
+        <div
+          className="glass animate-fade-up delay-300"
+          style={{
+            maxWidth: '460px',
+            width: '100%',
+            marginBottom: '20px',
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            textAlign: 'left',
+          }}
+        >
+          <div style={{ padding: '20px 24px', borderBottom: '1px dashed rgba(255,255,255,0.15)' }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 4px' }}>
+              Passenger
+            </p>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-light)', margin: 0, fontWeight: 500 }}>
+              {PASSENGER_NAME}
+            </p>
+          </div>
+
+          <div style={{ padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed rgba(255,255,255,0.15)' }}>
+            <div>
+              <p style={{ fontSize: '1.4rem', fontWeight: 600, color: 'var(--text-light)', margin: 0 }}>ORY</p>
+              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>Paris Orly</p>
+            </div>
+            <span style={{ color: 'var(--gold)', fontSize: '1.2rem' }}>→</span>
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: '1.4rem', fontWeight: 600, color: 'var(--gold)', margin: 0 }}>PPT</p>
+              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>Papeete</p>
+            </div>
+          </div>
+
+          <div style={{ padding: '20px 24px', display: 'flex', justifyContent: 'space-between', borderBottom: '1px dashed rgba(255,255,255,0.15)' }}>
+            <div>
+              <p style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 4px' }}>Flight</p>
+              <p style={{ fontSize: '0.95rem', color: 'var(--sand)', margin: 0 }}>{FLIGHT_NUMBER}</p>
+            </div>
+            <div>
+              <p style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 4px' }}>Date</p>
+              <p style={{ fontSize: '0.95rem', color: 'var(--sand)', margin: 0 }}>Aug 12, 2026</p>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 4px' }}>Departs</p>
+              <p style={{ fontSize: '0.95rem', color: 'var(--sand)', margin: 0 }}>12:00</p>
+            </div>
+          </div>
+
+          <a
+            href={FLIGHTRADAR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'block',
+              margin: '20px 24px 24px',
+              padding: '12px',
+              textAlign: 'center',
+              borderRadius: '50px',
+              background: 'rgba(200,160,80,0.15)',
+              border: '1px solid rgba(200,160,80,0.4)',
+              color: 'var(--sand)',
+              fontSize: '0.85rem',
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+            }}
+          >
+            Track {FLIGHT_NUMBER} on Flightradar24 ↗
+          </a>
         </div>
 
+        {/* Letter */}
         <div className="animate-fade-up delay-400" style={{ maxWidth: '520px' }}>
           {[
             "Tonight, pack lightly. Don't overthink it. I'm almost there.",
@@ -1185,6 +1656,9 @@ function Day10() {
             <p key={i} style={{ color: 'var(--sand)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: '16px' }}>{para}</p>
           ))}
         </div>
+
+        {/* Reunion envelope */}
+        <ReunionEnvelope />
 
         <div className="animate-float" style={{ fontSize: '3rem', marginTop: '32px' }}>🌅</div>
       </div>
