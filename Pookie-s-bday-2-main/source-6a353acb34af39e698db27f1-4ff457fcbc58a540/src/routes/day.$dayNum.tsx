@@ -53,7 +53,7 @@ function DayPage() {
 
   const dayComponents: Record<number, ComponentType> = {
   1: Day1, 2: Day2, 3: Day5, 4: Day4, 5: Day3, // <-- 3 and 5 swapped
-  6: Day6, 7: Day7, 8: Day8, 9: Day9, 10: Day10, 11: Day11,
+  6: Day6, 7: Day7, 8: Day8, 9: Day9, 10: Day10, 
 }
   const DayComponent = dayComponents[dayNum]
   return DayComponent ? <DayComponent /> : null
@@ -298,7 +298,7 @@ function Day1() {
 function Day2() {
   return (
     <PageShell dayNum={2} bgGradient="radial-gradient(ellipse at 30% 20%, #1a0f2a 0%, #071828 70%)">
-      <SectionTitle label="Day 2 · August 3" title="A Letter From My Heart" subtitle="Words I have been saving for you" />
+      <SectionTitle label="Day 2 · August 3" title="A Little letter" subtitle="From Me to You" />
       <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 24px 40px' }}>
         <div className="animate-fade-up delay-300" style={{
           background: 'linear-gradient(135deg, rgba(245,230,200,0.06) 0%, rgba(245,230,200,0.02) 100%)',
@@ -306,13 +306,12 @@ function Day2() {
           borderRadius: '20px',
           padding: 'clamp(28px, 6vw, 52px)',
         }}>
-          <p className="font-script" style={{ fontSize: '1.4rem', color: 'var(--gold)', marginBottom: '28px' }}>My love,</p>
+          <p className="font-script" style={{ fontSize: '1.4rem', color: 'var(--gold)', marginBottom: '28px' }}>Coucou,</p>
           {[
-            "J'ai eu envie d’écrire cette lettre depuis longtemps. À chaque fois que j’essayais, je me rendais compte que je n’avais pas les bons mots. Alors j’ai continué à attendre le bon moment. Je crois que ton anniversaire est le bon moment.",
-            "La distance est étrange. Elle rétrécit le monde d’une manière inattendue, puis l’étire d’une autre. Quand on est séparés, chaque petite chose devient importante, le bon comme le mauvais. On devient plus insécurisés, on a plus de doutes, on a besoin de plus d’être rassurés. Des disputes qui auraient normalement été réglées en une courte conversation et une étreinte durent soudain des jours, et les différences de routines, de modes de vie, de contextes et de fuseaux horaires rendent parfois difficile le sentiment de vivre vraiment les mêmes moments. Et pourtant, la distance nous oblige aussi à faire des choix plus forts : communiquer quand c’est difficile, prioriser quand ce n'est pas pratique, rester même quand c’est épuisant, et continuer à choisir d’avancer jour après jour. Le bon, le mauvais, les leçons et les erreurs de ces derniers mois, je garde tout. Je crois qu’avec le recul, on réalisera peut-être que c’était la clé pour construire les bases d’une relation qui peut durer toute une vie.",
-            "Tu m’as demandé un soir, quand je venais te voir à Antibes, si j’étais heureuse. Je veux te répondre correctement maintenant : oui. Mille fois oui. Pas parce que la distance est facile, ou belle, ou quelque chose que l’on choisirait — mais parce que même si je sais que j’ai déjà été heureuse avant, aujourd’hui j’ai toujours le sentiment qu’il me manque quelque chose. Oui, je pourrais être heureuse, mais je sais aussi que je serais plus heureuse avec toi. Et c’est rare, et je ne le prends pas à la légère.",
-        
-            "Alors bon anniversaire, mon amour. Merci d’avoir été patient avec moi pendant tous ces mois. Merci d’avoir fait de cette distance un prologue plutôt qu’un mur. Plus que dix jours et je serai là.",
+            "J'ai eu envie d'écrire cette lettre depuis longtemps. À chaque fois, j'avais l'impression de pas les bons mots. Alors j'ai continué à attendre le bon moment. Je crois que ton anniversaire est le bon moment.",
+            "La distance est étrange. Elle a rétrécit mon monde d'une manière inattendue, puis l'étire d'une autre. Quand on est séparés, on vit tout plus intensément, le bon comme le mauvais. On devient plus insécurisés, on a plus de doutes, on a besoin de plus d'être rassurés. Des disputes qui auraient normalement été réglées en une courte conversation et une étreinte durent soudain des jours, et les différences de routines, de modes de vie, de contextes et de fuseaux horaires rendent parfois difficile le sentiment de vivre vraiment les mêmes moments. Et pourtant, la distance nous oblige aussi à faire des choix plus forts : communiquer quand c'est difficile, prioriser quand ce n'est pas pratique, rester même quand c'est épuisant, et continuer à choisir d'avancer jour après jour. Le bon, le mauvais, les leçons et les erreurs de ces derniers mois, je garde tout. Je crois qu'avec le recul, on réalisera peut-être que c'était la clé pour construire les bases d'une relation qui peut durer toute une vie.",
+            "Tu m'as demandé un soir, quand je suis venue te voir à Antibes, si j'étais heureuse. Je veux te répondre correctement maintenant : oui. Mille fois oui. Pas parce que la distance est simple, ni belle, ni quelque chose que l’on choisirait volontairement. Mais parce que, même si je sais que j'ai déjà été heureuse avant, j'ai aujourd'hui cette impression persistante qu'il me manque quelque chose. Oui, je pourrais être heureuse ainsi. Mais je sais aussi que je le serais davantage avec toi. Et ce genre d'évidence est rare. Je ne la prends pas à la légère.",         
+            "Alors bon anniversaire, mon coeur. Merci d'avoir été patient avec moi pendant tous ces mois. Merci d'avoir fait de cette distance un prologue plutôt qu'un mur. Plus que dix jours et je serai là.",
             "Attends-moi encore un peu.",
           ].map((para, i) => (
             <p key={i} style={{ color: 'var(--sand)', lineHeight: 1.9, marginBottom: '20px', fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)' }}>
@@ -336,18 +335,18 @@ function Day2() {
 ══════════════════════════════════════════════════════════ */
 
 const memories = [
-  { date: 'Juillet 2024', title: 'The Ocean Call', memory: 'The first time you described the sea in Tahiti, I understood why you stayed. "It\'s not just blue," you said, "it\'s every shade of feeling at once." I replayed that for days.' },
-  { date: 'Août 2024', title: 'Morning Coffee', memory: 'You always send me coffee pictures when you wake up. It became my alarm clock — better than any sound. There\'s something incredibly intimate about sharing a cup across 16,000 km.' },
-  { date: 'Septembre 2024', title: 'Late Night Calls', memory: 'You\'re always in my tomorrow, I\'m always in your yesterday. And somehow we found a time that was ours — that strange, quiet hour where Paris sleeps and Tahiti softens.' },
-  { date: 'Octobre 2024', title: 'Tiare', memory: 'You sent me a pressed tiare flower in an envelope once. It arrived a little battered, still fragrant. I kept it. I still have it. It smells like you now.' },
-  { date: 'Novembre 2024', title: 'Our Playlist', memory: 'The playlist we built together, one song at a time, from two different hemispheres. Every song a tiny telegram — "this is what I\'m feeling," "this made me think of you."' },
-  { date: 'Décembre 2024', title: 'Your Sunsets', memory: 'I have a folder on my phone. Just your sunsets. 47 of them. Each one slightly different — sometimes gold, sometimes violent orange, sometimes soft pink. All of them yours.' },
-  { date: 'Janvier 2025', title: 'The Laugh', memory: 'I can\'t even explain what started it, but we laughed for forty straight minutes on that call. Real, breathless, ridiculous laughter. I needed that more than I knew.' },
-  { date: 'Février 2025', title: 'Tahiti Dream', memory: 'You described your island to me so many times that I dreamed about it before I\'d ever seen a photo. In my dreams it\'s always 5pm light, always warm, always you on the porch.' },
-  { date: 'Mars 2025', title: 'The Message', memory: 'The morning you sent "je pensais à toi en me réveillant" — just that, nothing else — and I read it on the metro and my whole day changed colour.' },
-  { date: 'Avril 2025', title: 'Synchronized Sunset', memory: 'We timed it once — you watching sunset in Tahiti, me watching sunset in Paris, 12 hours apart but somehow the same sky. You said the clouds looked like the ones above Montmartre.' },
-  { date: 'Mai 2025', title: 'Same Book', memory: 'We read the same book at the same time. Different copies, different continents. We\'d text each chapter. It was the closest I\'ve felt to being in the same room with you.' },
-  { date: 'Juin 2025', title: 'The Promise', memory: 'The day I booked the ticket. I sent you just the booking confirmation, no message. You replied with a single heart. That was enough — more than enough.' },
+  { title: 'Chofu', memory: 'The first time you described the sea in Tahiti, I understood why you stayed. "It\'s not just blue," you said, "it\'s every shade of feeling at once." I replayed that for days.', photo: '/gallery/us.JPG' },
+  { title: 'Dancing in Matsumoto', memory: 'You always send me coffee pictures when you wake up. It became my alarm clock — better than any sound. There\'s something incredibly intimate about sharing a cup across 16,000 km.', photo: '/gallery/matsumoto_horizontal.JPG' },
+  { title: 'The Pearl Club on Christmas Eve', memory: 'You\'re always in my tomorrow, I\'m always in your yesterday. And somehow we found a time that was ours — that strange, quiet hour where Paris sleeps and Tahiti softens.', photo: '/gallery/pearl_club.JPG' },
+  { title: 'Our insane hotel in Shanghai', memory: 'You sent me a pressed tiare flower in an envelope once. It arrived a little battered, still fragrant. I kept it. I still have it. It smells like you now.', photo: '/gallery/bed_shanghai.JPG' },
+  { title: 'First sunrise of the year on Great Wall', memory: 'The playlist we built together, one song at a time, from two different hemispheres. Every song a tiny telegram — "this is what I\'m feeling," "this made me think of you."', photo: '/gallery/sunrise_great_wall.JPG' },
+  { title: 'Guesthouse Ooshima', memory: 'I have a folder on my phone. Just your sunsets. 47 of them. Each one slightly different — sometimes gold, sometimes violent orange, sometimes soft pink. All of them yours.', photo: '/gallery/guesthouse_ooshima.JPG' },
+  { title: 'Sendai', memory: 'I can\'t even explain what started it, but we laughed for forty straight minutes on that call. Real, breathless, ridiculous laughter. I needed that more than I knew.', photo: '/gallery/snow_temple.JPG' },
+  { title: 'Tandem biking', memory: 'You described your island to me so many times that I dreamed about it before I\'d ever seen a photo. In my dreams it\'s always 5pm light, always warm, always you on the porch.', photo: '/gallery/tandem.JPG' },
+  { title: 'Sneaking into your room at Mejirodai', memory: 'The morning you sent "je pensais à toi en me réveillant" — just that, nothing else — and I read it on the metro and my whole day changed colour.', photo: '/gallery/mejirodai.JPG' },
+  { title: 'Garlic restaurant', memory: 'We timed it once — you watching sunset in Tahiti, me watching sunset in Paris, 12 hours apart but somehow the same sky. You said the clouds looked like the ones above Montmartre.', photo: '/gallery/garlic_2.JPG' },
+  { title: 'Night in Paris', memory: 'We read the same book at the same time. Different copies, different continents. We\'d text each chapter. It was the closest I\'ve felt to being in the same room with you.', photo: '/gallery/dinner_paris.JPG' },
+  { title: 'Drunk pizzas', memory: 'The day I booked the ticket. I sent you just the booking confirmation, no message. You replied with a single heart. That was enough — more than enough.', photo: '/gallery/pizzas.JPG' },
 ]
 
 // Deterministic heart positions — no Math.random() to avoid hydration mismatch
@@ -371,7 +370,7 @@ function Day3() {
   const [open, setOpen] = useState<number | null>(null)
   return (
     <PageShell dayNum={5} bgGradient="radial-gradient(ellipse at 60% 10%, #0f1f3a 0%, #071828 60%)">
-  <SectionTitle label="Day 5 · August 6" title="Our Memories" subtitle="Tap a heart to unlock a memory" />
+  <SectionTitle label="Day 5 · August 6" title="My Favorite Memories Together" subtitle="Tap a heart to unlock a memory" />
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 20px 40px' }}>
         {/* Heart field */}
         <div
@@ -411,70 +410,80 @@ function Day3() {
       </div>
 
       {/* Memory modal */}
-      {open !== null && (
-        <div
-          className="animate-fade-in"
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(7,24,40,0.85)',
-            backdropFilter: 'blur(10px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '24px',
-            zIndex: 200,
-          }}
-          onClick={() => setOpen(null)}
-        >
-          <div
-            className="glass animate-fade-up"
-            style={{
-              maxWidth: '420px',
-              width: '100%',
-              padding: '36px',
-              background: 'rgba(217,110,85,0.1)',
-              border: '1px solid rgba(217,110,85,0.35)',
-              borderRadius: '20px',
-            }}
-            onClick={e => e.stopPropagation()}
+{open !== null && (
+  <div
+    className="animate-fade-in"
+    style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(7,24,40,0.85)',
+      backdropFilter: 'blur(10px)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '24px',
+      zIndex: 200,
+    }}
+    onClick={() => setOpen(null)}
+  >
+    <div
+      className="glass animate-fade-up"
+      style={{
+        maxWidth: '420px',
+        width: '100%',
+        padding: '0',
+        background: 'rgba(217,110,85,0.1)',
+        border: '1px solid rgba(217,110,85,0.35)',
+        borderRadius: '20px',
+        overflow: 'hidden',
+      }}
+      onClick={e => e.stopPropagation()}
+    >
+      {/* Photo */}
+      <div style={{ width: '100%', height: '220px', overflow: 'hidden' }}>
+        <img
+          src={memories[open % memories.length].photo}
+          alt={memories[open % memories.length].title}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </div>
+
+      {/* Text content */}
+      <div style={{ padding: '28px 32px 32px' }}>
+        <h3 className="font-romantic" style={{ fontSize: '1.5rem', color: 'var(--text-light)', textAlign: 'center', margin: '0 0 18px', fontWeight: 400 }}>
+          {memories[open % memories.length].title}
+        </h3>
+        <p style={{ color: 'var(--sand)', lineHeight: 1.78, margin: '0 0 28px', fontSize: '0.95rem' }}>
+          {memories[open % memories.length].memory}
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
+          {open > 0 && (
+            <button
+              onClick={() => setOpen(open - 1)}
+              style={{ padding: '10px 20px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '50px', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.85rem' }}
+            >
+              ‹ Prev
+            </button>
+          )}
+          <button
+            onClick={() => setOpen(null)}
+            style={{ padding: '10px 24px', background: 'rgba(217,110,85,0.18)', border: '1px solid rgba(217,110,85,0.4)', borderRadius: '50px', color: 'var(--sand)', cursor: 'pointer', fontSize: '0.85rem' }}
           >
-            <p style={{ color: 'var(--gold)', fontSize: '0.72rem', letterSpacing: '0.22em', textTransform: 'uppercase', textAlign: 'center', margin: '0 0 8px' }}>
-              {memories[open % memories.length].date}
-            </p>
-            <h3 className="font-romantic" style={{ fontSize: '1.5rem', color: 'var(--text-light)', textAlign: 'center', margin: '0 0 18px', fontWeight: 400 }}>
-              {memories[open % memories.length].title}
-            </h3>
-            <p style={{ color: 'var(--sand)', lineHeight: 1.78, margin: '0 0 28px', fontSize: '0.95rem' }}>
-              {memories[open % memories.length].memory}
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
-              {open > 0 && (
-                <button
-                  onClick={() => setOpen(open - 1)}
-                  style={{ padding: '10px 20px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '50px', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.85rem' }}
-                >
-                  ‹ Prev
-                </button>
-              )}
-              <button
-                onClick={() => setOpen(null)}
-                style={{ padding: '10px 24px', background: 'rgba(217,110,85,0.18)', border: '1px solid rgba(217,110,85,0.4)', borderRadius: '50px', color: 'var(--sand)', cursor: 'pointer', fontSize: '0.85rem' }}
-              >
-                ✕ Close
-              </button>
-              {open < HEARTS_DATA.length - 1 && (
-                <button
-                  onClick={() => setOpen(open + 1)}
-                  style={{ padding: '10px 20px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '50px', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.85rem' }}
-                >
-                  Next ›
-                </button>
-              )}
-            </div>
-          </div>
+            ✕ Close
+          </button>
+          {open < HEARTS_DATA.length - 1 && (
+            <button
+              onClick={() => setOpen(open + 1)}
+              style={{ padding: '10px 20px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '50px', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.85rem' }}
+            >
+              Next ›
+            </button>
+          )}
         </div>
-      )}
+      </div>
+    </div>
+  </div>
+)}
     </PageShell>
   )
 }
@@ -485,27 +494,27 @@ function Day3() {
 const openWhenLetters = [
   {
     label: 'Open when you miss me',
-    text: "I'm here. Not in the room, I know — but in every message I've ever sent you, every call that ran too long, every song I added to our playlist thinking of you. The distance is real but so is this: I choose you every single day, from 16,000 km away. That doesn't stop when we're not talking. I miss you too. Meet me there, in that feeling — it means we're thinking of each other at the same time. That's not nothing. That's everything.",
+    text: "I hope you opened this immediately, because otherwise why do you not miss me? Jokes aside, I miss you too. All the time. The know the distance feels heavier some times, but I rather love you from a distance than anyone else. Anyway, did I say that I miss you too? I think a lot about you (in fact I'm probably thinking of you right now, even if I am asleep) and I daydream of our little life in Paris all the time. Can't wait to live together in our Haussmanian apartment and have plenty of cute dates and work on all of our projects. Life will only get more and more beautiful, and for that I can't wait. See you very soon, my love!",
   },
   {
     label: "Open when you're feeling low",
-    text: "Some days are just hard. Not because anything went wrong necessarily, but because the weight of ordinary life feels heavier. On those days, I want you to remember: you have made it through every difficult day so far. Every single one. That's a 100% success rate. I love you on the good days and even more on the ones like this. Let yourself rest. Let yourself feel it. I'll be here when you come up for air.",
+    text: "It's normal to have bad days sometimes. You are the most positive person I know, but even the happiest people have bad days. I am here for you and I am so so proud of you. You are doing amazing things and expanding your horizons in ways that most people could only dream of. Don't put too much pressure on yourself, it's okay to show vulnerability and to take breaks when needed. Your feelings are valid and important, and I want to make sure you have the space to express them. Remember, joy has an habit of returning, and you'll be back to your happy self in no time. I love you and I am here for you always.",
   },
   {
-    label: 'Open when you need to laugh',
-    text: "Remember when we tried to count how many times the call dropped during that one conversation and eventually just gave up and texted 'same'? Or when you described your neighbour's rooster in such detail that I laughed so hard I cried? Or when we both said the exact same weird phrase at the exact same time on a call and then just stared at each other across continents, stunned? You're ridiculous, and I am utterly delighted to know you.",
+    label: 'Open when you miss pooking around',
+    text: "Me tooooo. Pooking around is literally my favorite thing to do. I love to pook around in Paris. I love to pook around in Barcelona. I love to pook around in Brussels and in Lyon. In short, I just love to pook around. But I can't pook around without pookie and that is a problem. But you know what I do? I like to think of all the pooking around we will do when you're back. We'll bike on the quais de Seine, we'll go to the cinema, and to the theater, and we'll go to concerts and on cute dates. We'll go to fancy restaurants and sketchy ones on random arrondissements just to try foreign cuisines. We will have picnics and go bouldering and we'll chase invaders and put our lives at risk. Most importantly, we'll pook around in our apartment, if you know what I mean hehehe *wink wink* ANYWAY, can't wait to pook around again!",
   },
   {
-    label: "Open when you want to know you're loved",
-    text: "You are loved. Completely. Not the 'you're great but' kind of love — the full thing, no asterisks. I love your specific way of thinking, your honesty, the way you get excited about small things that matter to you. I love your voice when you're sleepy. I love that you remember details I mentioned once, weeks ago. I love that you exist. I love you so much it sometimes feels like a physical thing, like something I carry around. You are so, so loved.",
+    label: "Open when you want to feel loved",
+    text: "How could you ever doubt that! I love you so much! I'm literally becoming a coding expert cause I love you so much and I want to make you feel loved and special. Because you are. Do you know what you are too? THE LOVE OF MY LIFE. I should show you the list I made years ago, of things I wanted my future partner to have. You literally check all the boxes (except maybe I should've specified age? je rigoooole). All of this to say: you are literally the man of my dreams and I hope you never have to doubt it. You are so, so loved. By me, but your family, and your friends, and everyone who gets the chance to know you. Did I say that I love you? I LOOOOOVE YOUUUUUU",
   },
   {
-    label: "Open when you can't sleep",
-    text: "It's quiet there now. The lagoon is probably doing that thing where it looks like black glass. I can't see it from Paris but I imagine it sometimes, and I imagine you near it. Close your eyes. Think of one good thing from today — just one. Hold it gently. You don't have to fix anything right now. The night is just asking you to rest. And when morning comes, I'll be there in your messages. I always am. Sleep well, mon amour.",
+    label: "Open when we're having a hard time",
+    text: "Arguments suck, but at the end of the day we are just two people who love each other trying to figure things out. We will make mistakes, we will misunderstand each other, but we will also learn, and grow, and work through it. I love you, and I want to be with you. If I said something wrong, know that I am sorry and I didn't mean to hurt you. I try to do my best, but some days are harder than others. You are kind and thoughtful and caring, and I feel so lucky to be your girlfriend and best friend.Thank you for being patient with me, je sais qu'on va y arriver.",
   },
   {
-    label: "Open when you're waiting for me",
-    text: "I am coming. I want you to know that I am actually, literally, on my way. Every single day between now and August 12 is just time folding itself up to close the distance between us. The wait is almost over. Think about where you want to take me first — the specific place, the specific light. I want to see everything through your eyes. I want to finally be in the same place as you, at the same time, under the same sky. Almost there, my love. Almost.",
+    label: "Open when you feel homesick",
+    text: "Trust me I get it, I am the most nostalgic person alive. But how wonderful is it to have things that we miss? That means we have things that we care about and that are important to us. Just a reminder that what you’re feeling is normal. You’re far away from everything you've known, living a lot of things at once, and it makes sense that sometimes it feels like you want to go back to what feels familiar. But we will all be here waiting for you when you come back, and you'll look back and miss the time you were on a tiny motu in the middle of the Pacific! Remember to live plently of cool things, so we have lots of funny stories to tell our kids one day. I love you and I miss you.",
   },
 ]
 
@@ -607,7 +616,7 @@ function OpenWhenCard({ letter, index }: { letter: typeof openWhenLetters[0]; in
                     color: '#8a6030',
                   }}
                 >
-                  Avec amour
+                  With love, I.
                 </p>
               </div>
             </div>
@@ -624,7 +633,7 @@ function Day4() {
       dayNum={4}
       bgGradient="radial-gradient(ellipse at 40% 10%, #1a1208 0%, #071828 60%)"
     >
-      <SectionTitle label="Day 4 · August 5" title="Open When…" subtitle="Letters sealed with love, for whatever you feel" />
+      <SectionTitle label="Day 4 · August 5" title="Open When…" subtitle="Letters sealed with love, for whenever you need them" />
       <div
         style={{
           maxWidth: '600px',
@@ -646,7 +655,7 @@ function Day4() {
    DAY 5 · August 6 · BIRTHDAY SURPRISE #1 🎁
 ══════════════════════════════════════════════════════════ */
 
-const RESTAURANT_PHOTO = '/gallery/le_lotus.JPG' // make sure this matches the exact filename you upload
+const RESTAURANT_PHOTO = '/gallery/le_lotus.JPG' 
 
 function Day5() {
   const [open, setOpen] = useState(false)
@@ -659,7 +668,7 @@ function Day5() {
           className="animate-fade-up font-romantic italic"
           style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '40px' }}
         >
-          No birthday is complete without a gift.
+          No birthday is complete without a gift!
         </p>
 
         {/* Envelope */}
@@ -748,7 +757,7 @@ function Day5() {
 
             <div style={{ padding: '36px 32px', textAlign: 'center', border: '1px solid rgba(180,140,60,0.25)', margin: '14px', borderRadius: '2px' }}>
               <p style={{ fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#a08040', margin: '0 0 22px' }}>
-                You Are Cordially Invited
+                You Are Cordially Invited To
               </p>
 
               <h2 className="font-romantic" style={{ fontSize: '2rem', fontWeight: 400, color: '#2a2018', margin: '0 0 4px', letterSpacing: '0.02em' }}>
@@ -763,20 +772,20 @@ function Day5() {
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '26px' }}>
                 <div>
                   <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Date</p>
-                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>August 13th</p>
+                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>August 30th</p>
                 </div>
                 <div>
                   <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Time</p>
-                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>7:30 PM</p>
+                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>TBD</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Dress</p>
-                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>Elegant</p>
+                  <p style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#998', margin: '0 0 4px' }}>Companion</p>
+                  <p style={{ fontSize: '0.92rem', color: '#2a2018', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>Me!</p>
                 </div>
               </div>
 
               <p style={{ color: '#4a4034', lineHeight: 1.75, fontSize: '0.92rem', margin: '0 0 26px', fontFamily: "'Georgia', serif" }}>
-                For your birthday, I'm taking you to dinner — somewhere by the water, somewhere beautiful, just the two of us.
+                Let me invite you to a nice dinner for our last night together in Tahiti. Princess treatment because you deserve it! 
               </p>
 
               <div style={{ width: '40px', height: '1px', background: 'rgba(160,128,64,0.4)', margin: '0 auto 22px' }} />
@@ -785,7 +794,7 @@ function Day5() {
                 className="font-script"
                 style={{ fontSize: '1.3rem', color: '#a08040', margin: 0 }}
               >
-                See you there, mon amour
+                Lots of love, I.
               </p>
             </div>
           </div>
@@ -1139,21 +1148,15 @@ const galleryPhotos: GalleryPhoto[] = [
   { src: '/gallery/lanterns.JPG', caption: 'From the day we met' },
   { src: '/gallery/pastry.JPG', caption: 'First time hanging out together' },
   { src: '/gallery/turtles.JPG', caption: 'Insufferable couple before we even were a couple' },
-  { src: '/gallery/chofu.JPG', caption: 'The day I started crushing hard' },
   { src: '/gallery/georgian.JPG', caption: 'Officially together!!' },
   { src: '/gallery/pill.JPG', caption: 'The first from many visits' },
   { src: '/gallery/bike.JPG', caption: 'Our first mini trip together' },
-  { src: '/gallery/guesthouse.JPG', caption: 'The dreamiest guesthouse' },
   { src: '/gallery/ferry.JPG', caption: 'Almost missed it but I am glad I took a photo' },
   { src: '/gallery/billar.JPG', caption: 'Lots of pool games in Mejirodai' },
-  { src: '/gallery/picnic_tokyo.JPG', caption: 'Many more picnics to come' },
   { src: '/gallery/matsushima.JPG', caption: 'Prettiest view from a café' },
   { src: '/gallery/yamadera.JPG', caption: 'This place was magical' },
   { src: '/gallery/sendai.JPG', caption: 'When we realized it was snowing' },
-  { src: '/gallery/snow.JPG', caption: 'Snooow fight!' },
-  { src: '/gallery/snow_temple.JPG', caption: 'Just two people having stupid ideas' },
   { src: '/gallery/onsen.JPG', caption: 'Best reward after a very cold day' },
-  { src: '/gallery/garlic.JPG', caption: 'Probably my favorite date' },
   { src: '/gallery/macao_neon.JPG', caption: 'The beginning of our adventure in China' },
   { src: '/gallery/christmas_eve.JPG', caption: 'Singing white girl music at a Chinese club on Christmas Eve' },
   { src: '/gallery/hotel.JPG', caption: 'Best hotel ever!!' },
@@ -1161,14 +1164,11 @@ const galleryPhotos: GalleryPhoto[] = [
   { src: '/gallery/brochettes.JPG', caption: 'Photos taken before disaster' },
   { src: '/gallery/spicy.JPG', caption: 'If it is not the consequences of our actions' },
   { src: '/gallery/spice.JPG', caption: 'We do not learn from our mistakes' },
-  { src: '/gallery/tandem.JPG', caption: 'We were surprisingly good at tandem biking' },
   { src: '/gallery/new_year.JPG', caption: 'Weirdest New Years Eve of my life' },
-  { src: '/gallery/sunrise.JPG', caption: 'Top 3 most special moments I have ever experienced' },
   { src: '/gallery/great_wall.JPG', caption: 'The climb was no joke' },
   { src: '/gallery/palace.JPG', caption: 'Our favorite place' },
   { src: '/gallery/heart.JPG', caption: 'Months later, I can say it was true' },
   { src: '/gallery/back_paris.JPG', caption: 'Pookie came back to Paris' },
-  { src: '/gallery/welcome_back.JPG', caption: 'One very wonderful night together' },
   { src: '/gallery/matthieu.JPG', caption: 'We meet your friends!' },
   { src: '/gallery/board_games.JPG', caption: 'And also mine!' },
   { src: '/gallery/lyon.JPG', caption: 'We also met each others families' },
@@ -1180,6 +1180,7 @@ const galleryPhotos: GalleryPhoto[] = [
   { src: '/gallery/picnic.JPG', caption: 'We got better at planning picnics' },
   { src: '/gallery/sunset_paris.JPG', caption: 'And we walked around Paris comme des amoureaux' },
   { src: '/gallery/keys.JPG', caption: 'Almost became homeless when we forgot the keys inside the apartment' },
+  { src: '/gallery/bouldering.JPG', caption: 'Went bouldering for the first time ever!' },
   { src: '/gallery/nuget.JPG', caption: 'And discovered many new places in the city' },
   { src: '/gallery/tristan.JPG', caption: 'Spent some time with your family before you left' },
   { src: '/gallery/invader.JPG', caption: 'And chased many, many invaders' },
@@ -1663,165 +1664,6 @@ function Day10() {
         <div className="animate-float" style={{ fontSize: '3rem', marginTop: '32px' }}>🌅</div>
       </div>
     </PageShell>
-  )
-}
-
-/* ══════════════════════════════════════════════════════════
-   DAY 11 · August 12 · MISSION CONTROL ✈️
-══════════════════════════════════════════════════════════ */
-
-function MissionBlink({ children }: { children: ReactNode }) {
-  return <span className="mission-blink">{children}</span>
-}
-
-function Day11() {
-  const [arrived, setArrived] = useState(false)
-  const missionGreen = '#00ff88'
-
-  return (
-    <div style={{ minHeight: '100vh', background: '#050f0a', fontFamily: "'Lato', monospace", color: missionGreen, paddingBottom: '60px' }}>
-      {/* Header */}
-      <div style={{ borderBottom: `1px solid rgba(0,255,136,0.15)`, padding: '16px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link to="/journey" style={{ color: 'rgba(0,255,136,0.5)', fontSize: '0.75rem', letterSpacing: '0.15em', textDecoration: 'none' }}>
-          ← JOURNEY
-        </Link>
-        <span style={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: 'rgba(0,255,136,0.5)' }}>DAY 11 · AUG 12</span>
-      </div>
-
-      <div className="scanline" style={{ padding: '40px 24px', maxWidth: '720px', margin: '0 auto' }}>
-        {/* Title */}
-        <div className="animate-fade-up text-center" style={{ marginBottom: '48px' }}>
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.3em', color: 'rgba(0,255,136,0.5)', marginBottom: '12px' }}>
-            MISSION CONTROL · PARIS → TAHITI
-          </p>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 300, color: missionGreen, margin: '0 0 8px', textShadow: `0 0 30px ${missionGreen}` }}>
-            I'm Coming To You
-          </h1>
-          <p style={{ color: 'rgba(0,255,136,0.6)', fontSize: '0.9rem' }}>
-            <MissionBlink>●</MissionBlink> MISSION ACTIVE
-          </p>
-        </div>
-
-        {/* Status panels */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '16px', marginBottom: '32px' }}>
-          {[
-            { label: 'DEPARTURE', value: 'CDG · Paris Charles de Gaulle', sub: 'Charles de Gaulle Airport' },
-            { label: 'ARRIVAL', value: 'PPT · Faa\'a International', sub: 'Papeete, Tahiti' },
-            { label: 'FLIGHT', value: 'EDIT ME', sub: 'Update with your flight number' },
-            { label: 'STATUS', value: 'EN ROUTE', sub: 'I am on my way to you' },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="animate-fade-up"
-              style={{
-                border: `1px solid rgba(0,255,136,0.2)`,
-                borderRadius: '8px',
-                padding: '16px',
-                background: 'rgba(0,255,136,0.03)',
-                animationDelay: `${i * 100}ms`,
-              }}
-            >
-              <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', color: 'rgba(0,255,136,0.4)', margin: '0 0 6px' }}>{item.label}</p>
-              <p style={{ fontSize: '1rem', fontWeight: 700, margin: '0 0 4px', color: missionGreen }}>{item.value}</p>
-              <p style={{ fontSize: '0.75rem', color: 'rgba(0,255,136,0.5)', margin: 0 }}>{item.sub}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* FlightRadar link */}
-        <div
-          className="animate-fade-up delay-400 mission-glow"
-          style={{
-            border: `1px solid rgba(0,255,136,0.4)`,
-            borderRadius: '12px',
-            padding: '24px',
-            marginBottom: '32px',
-            background: 'rgba(0,255,136,0.04)',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', marginBottom: '12px', color: 'rgba(0,255,136,0.5)' }}>
-            LIVE FLIGHT TRACKING
-          </p>
-          <a
-            href="https://www.flightradar24.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-block',
-              padding: '14px 36px',
-              border: `1px solid ${missionGreen}`,
-              borderRadius: '6px',
-              color: '#050f0a',
-              background: missionGreen,
-              textDecoration: 'none',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              fontSize: '0.85rem',
-              marginBottom: '12px',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            ▶ TRACK FLIGHT
-          </a>
-          <br />
-          <span style={{ fontSize: '0.72rem', color: 'rgba(0,255,136,0.4)' }}>
-            Open FlightRadar24 and enter your flight number to track in real time
-          </span>
-        </div>
-
-        {/* Emotional message */}
-        <div
-          className="animate-fade-up delay-600"
-          style={{
-            border: '1px solid rgba(0,255,136,0.1)',
-            borderRadius: '12px',
-            padding: '32px',
-            textAlign: 'center',
-            background: 'rgba(0,255,136,0.02)',
-          }}
-        >
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', lineHeight: 1.8, color: 'rgba(0,255,136,0.9)', margin: '0 0 24px', fontStyle: 'italic' }}>
-            "Every message, every time zone, every long night apart was leading here.
-            I am in the air above the Pacific, getting closer to you with every second.
-            When this plane lands, the distance is finally, completely, over."
-          </p>
-          <p style={{ fontSize: '0.8rem', letterSpacing: '0.15em', color: 'rgba(0,255,136,0.4)' }}>— somewhere between Paris and paradise</p>
-        </div>
-
-        {/* Arrived button */}
-        {!arrived ? (
-          <div className="text-center mt-8 animate-fade-up" style={{ marginTop: '32px' }}>
-            <button
-              onClick={() => setArrived(true)}
-              style={{
-                background: 'none',
-                border: '1px solid rgba(0,255,136,0.3)',
-                borderRadius: '6px',
-                padding: '12px 32px',
-                color: 'rgba(0,255,136,0.5)',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                letterSpacing: '0.15em',
-              }}
-            >
-              I ARRIVED ▶
-            </button>
-          </div>
-        ) : (
-          <div className="animate-fade-in text-center" style={{ marginTop: '32px', padding: '32px', border: '1px solid rgba(0,255,136,0.5)', borderRadius: '12px' }}>
-            <p style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', fontFamily: "'Cormorant Garamond', serif", margin: '0 0 12px', color: missionGreen }}>
-              🎉 Mission Complete
-            </p>
-            <p style={{ color: 'rgba(0,255,136,0.7)', margin: 0, lineHeight: 1.7 }}>
-              We are in the same place.<br />
-              Same sky. Same air.<br />
-              Finally, finally together.
-            </p>
-          </div>
-        )}
-      </div>
-    </div>
   )
 }
 
