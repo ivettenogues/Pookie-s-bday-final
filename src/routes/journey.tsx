@@ -73,23 +73,6 @@ function JourneyPage() {
         </div>
       </div>
 
-      <div className="animate-fade-up delay-500 px-4" style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <p className="font-script" style={{ fontSize: '1.6rem', color: 'var(--gold)', marginBottom: '12px' }}>
-          10 days to go !!
-        </p>
-        <p
-          style={{
-            color: 'var(--text-muted)',
-            lineHeight: 1.7,
-            maxWidth: '560px',
-            margin: '0 auto',
-          }}
-        >
-          Today we are celebrating! Not only is your birthday, it's also the final countdown until I fly to Tahiti! It's officially only ten days left to go, and for that I have prepared ten little surprises for you, one for each day until we meet again hihi
-          Hope you like them !! I love you so much and I can't wait to see you in person again ❤️
-        </p>
-      </div>
-
       {/* Days grid */}
       <div
         className="max-w-4xl mx-auto px-4"
