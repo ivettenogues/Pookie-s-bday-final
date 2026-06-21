@@ -52,7 +52,7 @@ function JourneyPage() {
             textDecoration: 'none',
           }}
         >
-          ← Vers Toi
+          ← Back
         </Link>
         <h1
           className="font-romantic animate-fade-up"
