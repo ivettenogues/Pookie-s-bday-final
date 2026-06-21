@@ -90,7 +90,20 @@ function SectionTitle({ label, title, subtitle }: { label: string; title: string
     <div className="text-center animate-fade-up" style={{ padding: '48px 24px 32px' }}>
       <p style={{ fontSize: '0.7rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '12px' }}>{label}</p>
       <h1 className="font-romantic" style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 300, color: 'var(--text-light)', margin: '0 0 12px' }}>{title}</h1>
-      {subtitle && <p className="font-romantic italic" style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>{subtitle}</p>}
+      {subtitle && (
+        <p
+          className="font-romantic italic"
+          style={{
+            color: 'var(--text-muted)',
+            fontSize: '1.05rem',
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: 1.6,
+          }}
+        >
+          {subtitle}
+        </p>
+      )}
       <Divider />
     </div>
   )
@@ -980,16 +993,16 @@ function Day7() {
 
   const budgetMessages = [
     "We've barely started and we're already in trouble.",
-    "Ah yes, the famous Parisian 'cozy' pricing.",
-    "At this point we should just buy the building.",
+    "I didn't know being cozy was so expensive...",
     "This is fine. This is totally fine.",
-    "Le propriétaire is laughing somewhere right now.",
+    "At this point we should just move to the banlieue and take the RER...",
+    "Maybe we can make it work with the APLs... no?",
   ]
   const budgetMessage = budgetMessages[Math.min(placed.length, budgetMessages.length - 1)]
 
   return (
     <PageShell dayNum={7} bgGradient="radial-gradient(ellipse at 50% 0%, #1a2a0a 0%, #071828 60%)">
-      <SectionTitle label="Day 7 · August 8" title="Building Our Home" subtitle="Tap to start filling it up (Paris rent permitting)" />
+      <SectionTitle label="Day 7 · August 8" title="Building Our Home" subtitle="I can't wait to move in together! I'm so excited, I have already started looking at apartments. And I've realized, you really can't have it all, not for 1700€ anyway. Let's see what we can compromise on..." />
 
       <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 20px 40px' }}>
         {/* The "home" scene */}
@@ -1011,7 +1024,7 @@ function Day7() {
         >
           {placed.length === 0 ? (
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontStyle: 'italic', margin: 0 }}>
-              Empty for now. Let's fill it up.
+              Tap to design our future home. Stick to the budget... but don't forget the APLs! 
             </p>
           ) : (
             placed.map(i => (
@@ -1023,43 +1036,51 @@ function Day7() {
         </div>
 
         {/* Budget bar */}
-        <div
-          className="glass animate-fade-up"
-          style={{
-            padding: '18px 20px',
-            marginBottom: '24px',
-            background: isOverBudget ? 'rgba(200,100,100,0.08)' : 'rgba(255,255,255,0.03)',
-            border: `1px solid ${isOverBudget ? 'rgba(200,100,100,0.35)' : 'rgba(255,255,255,0.1)'}`,
-            borderRadius: '14px',
-            transition: 'background 0.3s ease, border 0.3s ease',
-          }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-              Paris apartment budget
-            </span>
-            <span style={{ fontSize: '0.78rem', color: isOverBudget ? '#e08a8a' : 'var(--sand)', fontWeight: 600 }}>
-              €{totalCost} / €{PARIS_BUDGET}
-            </span>
-          </div>
-          <div style={{ height: '8px', borderRadius: '50px', background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-            <div
-              style={{
-                height: '100%',
-                width: `${Math.min(pctOfBudget, 100)}%`,
-                background: isOverBudget
-                  ? 'linear-gradient(90deg, #c87070, #e08a8a)'
-                  : 'linear-gradient(90deg, #a0c870, #c8d890)',
-                transition: 'width 0.4s ease, background 0.3s ease',
-              }}
-            />
-          </div>
-          {isOverBudget && (
-            <p className="animate-fade-up" style={{ margin: '10px 0 0', fontSize: '0.8rem', color: '#e08a8a', fontStyle: 'italic' }}>
-              €{overBy} over budget. {budgetMessage}
-            </p>
-          )}
-        </div>
+<div
+  className="glass animate-fade-up"
+  style={{
+    padding: '18px 20px',
+    marginBottom: '24px',
+    background: isOverBudget ? 'rgba(200,100,100,0.08)' : 'rgba(255,255,255,0.03)',
+    border: `1px solid ${isOverBudget ? 'rgba(200,100,100,0.35)' : 'rgba(255,255,255,0.1)'}`,
+    borderRadius: '14px',
+    transition: 'background 0.3s ease, border 0.3s ease',
+  }}
+>
+  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+    <span style={{ fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+      Paris apartment budget
+    </span>
+    <span style={{ fontSize: '0.78rem', color: isOverBudget ? '#e08a8a' : 'var(--sand)', fontWeight: 600 }}>
+      €{totalCost} / €{PARIS_BUDGET}
+    </span>
+  </div>
+  <div style={{ height: '8px', borderRadius: '50px', background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+    <div
+      style={{
+        height: '100%',
+        width: `${Math.min(pctOfBudget, 100)}%`,
+        background: isOverBudget
+          ? 'linear-gradient(90deg, #c87070, #e08a8a)'
+          : 'linear-gradient(90deg, #a0c870, #c8d890)',
+        transition: 'width 0.4s ease, background 0.3s ease',
+      }}
+    />
+  </div>
+  {placed.length > 0 && (
+    <p
+      className="animate-fade-up"
+      style={{
+        margin: '10px 0 0',
+        fontSize: '0.8rem',
+        color: isOverBudget ? '#e08a8a' : 'var(--text-muted)',
+        fontStyle: 'italic',
+      }}
+    >
+      {isOverBudget ? `€${overBy} over budget. ${budgetMessage}` : budgetMessage}
+    </p>
+  )}
+</div>
 
         {/* Item picker grid */}
         <div
