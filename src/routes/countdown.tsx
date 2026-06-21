@@ -61,22 +61,9 @@ function CountdownPage() {
           The Final Countdown
         </p>
 
-        <h1
-          className="animate-fade-up font-romantic"
-          style={{
-            fontSize: 'clamp(2rem, 8vw, 4rem)',
-            fontWeight: 300,
-            color: 'var(--text-light)',
-            marginBottom: '28px',
-            animationDelay: '0.25s',
-          }}
-        >
-          Until We Meet Again
-        </h1>
-
-        <div className="animate-fade-up mb-12" style={{ animationDelay: '0.4s' }}>
-          <Countdown targetDate={FLIGHT_DATE} />
-        </div>
+        <div className="animate-fade-up mb-12" style={{ animationDelay: '0.4s', marginTop: '60px' }}>
+  <Countdown targetDate={FLIGHT_DATE} />
+</div>
 
         <p className="animate-fade-up mb-16" style={{ fontSize: '0.9rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', animationDelay: '0.55s' }}>
           August 12, 2026
@@ -85,7 +72,7 @@ function CountdownPage() {
         {/* Navigation buttons */}
         <div className="animate-fade-up flex items-center justify-center gap-6" style={{ animationDelay: '0.7s', flexWrap: 'wrap' }}>
           <Link
-            to="/welcome"
+            to="/welcome_2"
             style={{
               display: 'inline-block',
               padding: '14px 32px',

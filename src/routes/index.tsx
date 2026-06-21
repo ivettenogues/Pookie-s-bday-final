@@ -69,16 +69,14 @@ function BirthdayModal({ onClose }: { onClose: () => void }) {
         }}
         onClick={e => e.stopPropagation()}
       >
-        <p style={{ color: 'var(--gold)', fontSize: '0.72rem', letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: '16px' }}>
-          🎂 Happy Birthday 🎂
-        </p>
+    
         <h2 className="font-romantic" style={{ fontSize: '2rem', fontWeight: 300, color: 'var(--text-light)', marginBottom: '24px', lineHeight: 1.2 }}>
-          10 days to go!
+          Hello my love!
         </h2>
         <p style={{ color: 'var(--sand)', lineHeight: 1.85, fontSize: '1rem', marginBottom: '36px' }}>
-          Today we are celebrating! Not only is it your birthday, it's also the final countdown until I fly to Tahiti! Officially only ten days left to go, and for that I have prepared ten little surprises for you, one for each day until we meet again hihi
+          Time has passed and we will finally be seeing each other again soon. This time, in Tahiti! <br /> To celebrate you, your birthday, and the final countdown before we reunite, I made this little journey for you - starting from your birthday. <br />Ten days of little surprises that I hope will make you smile and remind you of how much I love you.  
           <br /><br />
-          I love you and I can't wait to see you again 💛
+          Je t'aime fort et j'ai hâte de te retrouver 💛
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
           <button

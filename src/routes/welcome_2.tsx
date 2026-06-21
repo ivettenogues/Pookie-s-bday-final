@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useEffect, useRef } from 'react'
 
-export const Route = createFileRoute('/welcome')({
-  component: WelcomePage,
+export const Route = createFileRoute('/welcome_2')({
+  component: Welcome2Page,
 })
 
 function StarField() {
@@ -41,7 +41,7 @@ function WaveLayer({ opacity, delay, color }: { opacity: number; delay: string; 
   )
 }
 
-function WelcomePage() {
+function Welcome2Page() {
   return (
     <div
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
@@ -54,26 +54,6 @@ function WelcomePage() {
       <div className="absolute pointer-events-none" style={{ width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(30,95,130,0.25) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -60%)' }} />
 
       <div className="relative z-10 text-center px-6 max-w-xl mx-auto">
-        <p
-          className="animate-fade-up font-script"
-          style={{ color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '20px', animationDelay: '0.1s' }}
-        >
-          A little story
-        </p>
-
-        <h1
-          className="animate-fade-up font-romantic"
-          style={{
-            fontSize: 'clamp(2rem, 6vw, 3.2rem)',
-            fontWeight: 300,
-            color: 'var(--text-light)',
-            marginBottom: '28px',
-            lineHeight: 1.2,
-            animationDelay: '0.25s',
-          }}
-        >
-          Before we begin
-        </h1>
 
         <p
           className="animate-fade-up font-romantic italic"
@@ -82,30 +62,53 @@ function WelcomePage() {
             fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
             lineHeight: 1.8,
             marginBottom: '40px',
-            animationDelay: '0.4s',
+            animationDelay: '0.25s',
           }}
         >
-          {/* Placeholder — write the real story here */}
-          Long before maps and modern navigation, Polynesian voyagers crossed the endless Pacific Ocean by looking up. 
-          They read the stars, the waves, the winds, and the ocean around them. 
-          They trusted that the sky would guide them toward where they were meant to be and that even when the destination was far away, the path was still there.
+          {/* Placeholder — continue the story here */}
+          We may not be great Polynesian navigators, but I think about that night in Niijima sitting by the ocean, looking up at the stars, talking about the future and all of our the dreams.
+          You told me you were a big dreamer, I said me too. <br /> We had been together for less than a month, yet I knew that what we had was special. That we would go places. That we would have stories worth telling.<br />
+          Now, I look back and realize that we have built our own constellation.
+          Every memory, every trip, every little side quest, every laugh, every difficult moment, every ordinary day — all of it has become a star in our sky.<br />
+          And maybe that is what guides us: not knowing exactly where the future will take us, but looking up and seeing all the moments that brought us here, reminding us that we will always find our way.
+          <br />
+          I can't wait to watch the stars together in Tahiti 
         </p>
 
-        <div className="animate-fade-up" style={{ animationDelay: '0.55s' }}>
+        {/* Navigation buttons */}
+        <div className="animate-fade-up flex items-center justify-center gap-6" style={{ animationDelay: '0.4s', flexWrap: 'wrap' }}>
           <Link
-            to="/welcome_2"
+            to="/welcome"
+            style={{
+              display: 'inline-block',
+              padding: '14px 32px',
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '50px',
+              color: 'var(--text-muted)',
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: '1rem',
+              textDecoration: 'none',
+              letterSpacing: '0.08em',
+              transition: 'all 0.4s ease',
+            }}
+          >
+            ← Back
+          </Link>
+
+          <Link
+            to="/countdown"
             style={{
               display: 'inline-block',
               padding: '14px 40px',
-              background: 'linear-gradient(135deg, rgba(200,160,80,0.15) 0%, rgba(200,160,80,0.08) 100%)',
+              background: 'linear-gradient(135deg, rgba(200,160,80,0.2) 0%, rgba(200,160,80,0.1) 100%)',
               border: '1px solid rgba(200,160,80,0.5)',
               borderRadius: '50px',
               color: 'var(--gold-light)',
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: '1.1rem',
-              fontWeight: 400,
-              letterSpacing: '0.1em',
+              fontSize: '1.05rem',
               textDecoration: 'none',
+              letterSpacing: '0.08em',
               transition: 'all 0.4s ease',
             }}
           >
@@ -119,3 +122,4 @@ function WelcomePage() {
     </div>
   )
 }
+

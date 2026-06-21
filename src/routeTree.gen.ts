@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Welcome_2RouteImport } from './routes/welcome_2'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as CountdownRouteImport } from './routes/countdown'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DayDayNumRouteImport } from './routes/day.$dayNum'
 
+const Welcome_2Route = Welcome_2RouteImport.update({
+  id: '/welcome_2',
+  path: '/welcome_2',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WelcomeRoute = WelcomeRouteImport.update({
   id: '/welcome',
   path: '/welcome',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/countdown': typeof CountdownRoute
   '/journey': typeof JourneyRoute
   '/welcome': typeof WelcomeRoute
+  '/welcome_2': typeof Welcome_2Route
   '/day/$dayNum': typeof DayDayNumRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/countdown': typeof CountdownRoute
   '/journey': typeof JourneyRoute
   '/welcome': typeof WelcomeRoute
+  '/welcome_2': typeof Welcome_2Route
   '/day/$dayNum': typeof DayDayNumRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,34 @@ export interface FileRoutesById {
   '/countdown': typeof CountdownRoute
   '/journey': typeof JourneyRoute
   '/welcome': typeof WelcomeRoute
+  '/welcome_2': typeof Welcome_2Route
   '/day/$dayNum': typeof DayDayNumRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/countdown' | '/journey' | '/welcome' | '/day/$dayNum'
+  fullPaths:
+    | '/'
+    | '/countdown'
+    | '/journey'
+    | '/welcome'
+    | '/welcome_2'
+    | '/day/$dayNum'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/countdown' | '/journey' | '/welcome' | '/day/$dayNum'
-  id: '__root__' | '/' | '/countdown' | '/journey' | '/welcome' | '/day/$dayNum'
+  to:
+    | '/'
+    | '/countdown'
+    | '/journey'
+    | '/welcome'
+    | '/welcome_2'
+    | '/day/$dayNum'
+  id:
+    | '__root__'
+    | '/'
+    | '/countdown'
+    | '/journey'
+    | '/welcome'
+    | '/welcome_2'
+    | '/day/$dayNum'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,11 +104,19 @@ export interface RootRouteChildren {
   CountdownRoute: typeof CountdownRoute
   JourneyRoute: typeof JourneyRoute
   WelcomeRoute: typeof WelcomeRoute
+  Welcome_2Route: typeof Welcome_2Route
   DayDayNumRoute: typeof DayDayNumRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/welcome_2': {
+      id: '/welcome_2'
+      path: '/welcome_2'
+      fullPath: '/welcome_2'
+      preLoaderRoute: typeof Welcome_2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/welcome': {
       id: '/welcome'
       path: '/welcome'
@@ -124,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   CountdownRoute: CountdownRoute,
   JourneyRoute: JourneyRoute,
   WelcomeRoute: WelcomeRoute,
+  Welcome_2Route: Welcome_2Route,
   DayDayNumRoute: DayDayNumRoute,
 }
 export const routeTree = rootRouteImport
